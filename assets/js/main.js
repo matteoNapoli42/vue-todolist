@@ -27,7 +27,13 @@ createApp({
             return this.todoTasks.push(x);
         },
 
-        deleteTask : function(elem,index){
+        deleteTask : function(index){
+            if(this.todoTasks[index].flag === false)
+            {
+                this.todoTasks.splice(index,1);
+                console.log(this.todoTasks);
+            }
+                
         },
 
         checkTaskStatus : function(){
