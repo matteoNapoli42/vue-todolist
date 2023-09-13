@@ -15,21 +15,24 @@
         <form class="col-12 d-flex justify-content-center p-3 ">
             <div class="col-3 mx-4">
                 <label for="taskInput" class="px-3">Insert the new Task</label>
-                <input id="taskInput" type="text" placeholder="New Task">
+                <input v-on:keyup.enter="submit" v-model="newTask" id="taskInput" type="text" placeholder="New Task">
             </div>
             <div class="col-3 py-3">
-                <button class="btn btn-secondary" @click="addTask(newTask)">Add Task</button>
+                <button class="btn btn-secondary" @click.prevent="addTask(newTask)">Add Task</button>
             </div>
         </form>
 
         <section>
-            <h1 class="text-center">ToDo List</h1>
-            <ul class="d-flex justify-content-center">
-                <li>
-                    Qui vanno mostrate le task
+            <h1>ToDo List</h1>
+            <ol>
+                <li v-for="(element,index) in todoTasks">
+                    <span>
+                        {{element.task}} 
+                        <i @click.prevent="deleteTask(elem,index)" class="fa-solid fa-circle-xmark text-danger py-1 px-2"></i>
+                    </span>
                 </li>
-                <i class="fa-solid fa-circle-xmark text-danger py-1 px-2"></i>
-            </ul>
+                
+            </ol>
         </section>
     </div>
     <script src="./assets/js/main.js"></script>

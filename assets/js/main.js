@@ -15,12 +15,23 @@ const {createApp} = Vue
 createApp({
     data(){
         return{
-
+            todoTasks:[],
         }
     },
 
     methods:
     {
+        addTask : function(input){
+            const x = {task : input, flag : false};
+            console.log(this.todoTasks);
+            return this.todoTasks.push(x);
+        },
+
+        deleteTask : function(elem,index){
+        },
+
+        checkTaskStatus : function(){
+        }
     
     }
 }).mount("#app")
