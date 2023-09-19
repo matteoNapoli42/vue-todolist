@@ -22,23 +22,23 @@ createApp({
 
     methods:
     {
-        addTask : function(input){
+        addTask(input){
             const x = {task : input, done : false};
             console.log(this.todoTasks);
             this.newTask="";
             return this.todoTasks.push(x);
         },
 
-        deleteTask : function(index){
-            if(this.todoTasks[index].done === false)
-            {
-                this.todoTasks.splice(index,1);
-                console.log(this.todoTasks);
-            }
-                
+        deleteTask(index){
+            this.todoTasks.splice(index,1);
+            console.log(this.todoTasks);
         },
 
-        checkTaskStatus : function(){
+        changeStatus(index){
+            if(this.todoTasks[index].done===false)
+                this.todoTasks[index].done=true;
+            else
+                this.todoTasks[index].done=false;
         }
     
     }

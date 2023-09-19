@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>VueToDoList</title>
     <link rel="stylesheet" href="./assets/css/style.css">
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
@@ -12,27 +12,27 @@
 <body>
     <div id="app" class=" m-0 justify-content-center align-items-center">
 
-        <form class="col-12 d-flex justify-content-center p-3 ">
-            <div class="col-3 mx-4">
-                <label for="taskInput" class="px-3">Insert the new Task</label>
+        <form class="d-flex gap-3 m-5 justify-content-center">
+            <div class="my-1">
                 <input keyup.enter="addTask(newTask)" v-model="newTask" id="taskInput" type="text" placeholder="New Task">
             </div>
-            <div class="col-3 py-3">
-                <button class="btn btn-secondary" @click.prevent="addTask(newTask)">Add Task</button>
+            <div>
+                <button class="btn btn-primary" @click.prevent="addTask(newTask)">Add Task</button>
             </div>
         </form>
 
-        <section>
-            <h1>ToDo List</h1>
-            <ol>
-                <li v-for="(element,index) in todoTasks">
-                    <span :style="element.done ? 'text-decoration:line-through' : '' ">
-                        {{element.task}} 
+            <h1 class="text-center"><img src="./assets/img/Logo.png" alt="">ToDo List</h1>
+            <div class="container d-flex justify-content-around">
+                <ul>
+                    <li v-for="(element,index) in todoTasks" class="d-flex">
+                        <h5 :style="element.done ? 'text-decoration:line-through' : '' " @click="changeStatus(index)">
+                            {{element.task}}
+                        </h5>
                         <i @click.prevent="deleteTask(index)" class="fa-solid fa-circle-xmark text-danger py-1 px-2"></i>
-                    </span>
-                </li>
-                
-            </ol>
+                    </li>
+                </ul>
+            </div>
+            
         </section>
     </div>
     <script src="./assets/js/main.js"></script>
